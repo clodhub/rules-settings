@@ -1,0 +1,15 @@
+import { assert, load } from './runtime.mjs';
+const web = await load('web/index.ts');
+const schema = { type: 'object', properties: { limit: { type: 'integer', minimum: 1 } }, required: ['limit'], additionalProperties: false };
+assert.deepEqual(web.validate({ limit: 2 }, schema), []);
+assert.ok(web.validate({ limit: 0 }, schema).length > 0);
+assert.ok(web.validate({ limit: '2' }, schema).length > 0);
+assert.ok(web.validate({ limit: 2, extra: true }, schema).length > 0);
+assert.equal(web.parseRules('{', schema).ok, false);
+const parsed = web.parseRules('{"limit":2}', schema);
+assert.equal(parsed.ok, true);
+assert.ok(Object.isFrozen(parsed.rules));
+const server = await load('server/index.ts');
+const rules = server.createRulesSettings({ section: { count: 3 } });
+assert.equal(rules.value('section.count'), 3);
+assert.equal(rules.value('absent'), undefined);

@@ -1,6 +1,6 @@
 {
   "name": "rules-settings",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "title": "Rules settings",
   "description": "House rules kept in one checked settings file that the game and the rules page both read: a loader, a JSON-schema-style validator with a schema file, typed lookups by path, and rows for a rules page.",
   "facilities": [
@@ -82,5 +82,137 @@
       }
     ],
     "notes": "Pure library; no provider limits apply. The rules file is read once at startup."
+  },
+  "classes": [
+    {
+      "reference": {
+        "name": "ourapps-ae/rules-settings-class",
+        "version": "1.0.0",
+        "digest": "35fda69e93ba27f13db27d48f46c6d5e3963b1f2d816ec5a40c064d1dbcb47fd"
+      },
+      "descriptor": {
+        "format": 1,
+        "name": "ourapps-ae/rules-settings-class",
+        "version": "1.0.0",
+        "provides": [
+          {
+            "type": "ae/rules-settings",
+            "version": "1.0.0",
+            "path": "classes/rules-settings-class/rules-settings.json",
+            "modules": {
+              "web": [
+                "web/index.ts"
+              ],
+              "server": [
+                "server/index.ts"
+              ],
+              "windows": [
+                "web/index.ts"
+              ]
+            }
+          }
+        ],
+        "requires": [],
+        "settings": {
+          "type": "object",
+          "properties": {
+            "rulesFile": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9-]{0,63}$"
+            },
+            "strict": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "rulesFile",
+            "strict"
+          ],
+          "additionalProperties": false
+        },
+        "inventory": [
+          {
+            "path": "classes/rules-settings-class/check.mjs",
+            "digest": "035c953a545fa1894a03f73d40df030614c28ea4b062fd59e3898560c671897a"
+          },
+          {
+            "path": "classes/rules-settings-class/rules-settings.json",
+            "digest": "b5f146d4e11aca0904075e8b589460a0037af6a70e22fb12ed7ddf418a24c684"
+          },
+          {
+            "path": "classes/rules-settings-class/runtime.mjs",
+            "digest": "7440f3891614c423f74668cb5a2445fea58bbfa4d7c740c8e8a855d1d9300d43"
+          }
+        ],
+        "verification": [
+          {
+            "id": "shared",
+            "root": "package",
+            "argv": [
+              "node",
+              "classes/rules-settings-class/check.mjs"
+            ],
+            "cwd": ".",
+            "prepare": [],
+            "tools": {
+              "node": "26.5"
+            },
+            "fixtures": [
+              "classes/rules-settings-class/check.mjs"
+            ],
+            "locks": [],
+            "network": false,
+            "timeoutSeconds": 60,
+            "expectedExit": 0,
+            "scope": "required-local",
+            "requirements": []
+          }
+        ]
+      }
+    }
+  ],
+  "implements": [
+    {
+      "name": "ourapps-ae/rules-settings-class",
+      "version": "1.0.0",
+      "digest": "35fda69e93ba27f13db27d48f46c6d5e3963b1f2d816ec5a40c064d1dbcb47fd"
+    }
+  ],
+  "upstream": [],
+  "compatibility": {
+    "runtimes": {
+      "node": ">=26.5.0 <27.0.0"
+    },
+    "frameworks": {},
+    "dependencies": [],
+    "styles": {
+      "scope": "none",
+      "namespaces": [],
+      "conflicts": []
+    }
+  },
+  "maintenance": {
+    "owners": [
+      "Level N Ltd"
+    ],
+    "contact": "https://github.com/ourapps-ae/rules-settings/issues",
+    "repository": "https://github.com/ourapps-ae/rules-settings",
+    "updates": {
+      "source": "https://github.com/ourapps-ae/rules-settings/releases",
+      "strategy": "manual"
+    }
+  },
+  "supportedPlatforms": [
+    "server",
+    "web",
+    "windows"
+  ],
+  "licence": "Apache-2.0",
+  "licenceFile": "LICENCE",
+  "noticeFile": "NOTICE",
+  "templates": [],
+  "modules": {
+    "web": "web/index.ts",
+    "server": "server/index.ts"
   }
 }
