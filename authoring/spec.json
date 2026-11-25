@@ -1,6 +1,6 @@
 {
   "name": "rules-settings",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "title": "Rules settings",
   "description": "House rules kept in one checked settings file that the game and the rules page both read: a loader, a JSON-schema-style validator with a schema file, typed lookups by path, and rows for a rules page.",
   "facilities": [
@@ -42,7 +42,7 @@
     "web"
   ],
   "tools": {
-    "node": "26.5.0"
+    "node": "26.5"
   },
   "suites": [
     {
@@ -86,13 +86,13 @@
   "classes": [
     {
       "reference": {
-        "name": "ourapps-ae/rules-settings-class",
+        "name": "clodhub/rules-settings-class",
         "version": "1.1.0",
-        "digest": "c7db43c06c8ed39738e167c75d673c43af3a44cddb4a0ae0d14f8ecb66e35987"
+        "digest": "ad578301ef7bc3e350a99cb53765e30e7e31f8994db2959695d443e00455e0b4"
       },
       "descriptor": {
         "format": 2,
-        "name": "ourapps-ae/rules-settings-class",
+        "name": "clodhub/rules-settings-class",
         "version": "1.1.0",
         "title": "Rules settings",
         "summary": "A typed settings file read, checked and frozen for the rest of the application",
@@ -141,7 +141,7 @@
           },
           {
             "path": "classes/rules-settings-class/rules-settings.json",
-            "digest": "b5f146d4e11aca0904075e8b589460a0037af6a70e22fb12ed7ddf418a24c684"
+            "digest": "30fb1bd341295be7e30ffa8268c079fc08d59b318f67399d658364d816c76734"
           },
           {
             "path": "classes/rules-settings-class/runtime.mjs",
@@ -177,9 +177,9 @@
   ],
   "implements": [
     {
-      "name": "ourapps-ae/rules-settings-class",
+      "name": "clodhub/rules-settings-class",
       "version": "1.1.0",
-      "digest": "c7db43c06c8ed39738e167c75d673c43af3a44cddb4a0ae0d14f8ecb66e35987"
+      "digest": "ad578301ef7bc3e350a99cb53765e30e7e31f8994db2959695d443e00455e0b4"
     }
   ],
   "upstream": [],
@@ -199,10 +199,10 @@
     "owners": [
       "Level N Ltd"
     ],
-    "contact": "https://github.com/ourapps-ae/rules-settings/issues",
-    "repository": "https://github.com/ourapps-ae/rules-settings",
+    "contact": "https://github.com/clodhub/rules-settings/issues",
+    "repository": "https://github.com/clodhub/rules-settings",
     "updates": {
-      "source": "https://github.com/ourapps-ae/rules-settings/releases",
+      "source": "https://github.com/clodhub/rules-settings/releases",
       "strategy": "manual"
     }
   },

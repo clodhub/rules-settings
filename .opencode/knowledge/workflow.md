@@ -1,6 +1,6 @@
 # Local workflow
 
-Local only: repository `ourapps-ae/rules-settings` has no commits, pushes, remote changes or publishing without George's say-so. Licence wording remains deferred (`licenceStatus: "deferred"`).
+Repository: `clodhub/rules-settings`. Licence: `Apache-2.0` (`LICENCE`, `NOTICE`).
 Suite commands (from the package root): `node --test tests/web.test.ts`.
 Review a fetched archive: `python3 -m aepm review <digest> --store STORE --policy POLICY --trusted --allow-network`.
 Always run Python with `-B`; never write bytecode into the repository.
