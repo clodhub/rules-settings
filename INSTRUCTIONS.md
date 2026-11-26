@@ -3,11 +3,11 @@
 ## For the agent
 Select this component when a recipe has a house rules file. Set `rulesFile` to the name of the recipe's rules file without folder or extension (for `rules/texas-holdem-house-rules.json` that is `texas-holdem-house-rules`) and keep `strict` true. Supply the recipe's schema file next to the rules file (the shipped envelope schema is only a minimum). Connect the provided `rules-settings` to the components that read rules (holdem-rules, turn-engine).
 
-- Select package `clodhub/rules-settings` version `0.10.0`.
+- Select package `pkg:clod/com.clodhub/rules-settings` version `0.11.0`.
 - Settings to configure:
   - `rulesFile` (string, slug; optional; default `house-rules`)
-  - `strict` (boolean; optional; default `True`)
-- Connect the provided `rules-settings` (ae/rules-settings 1.0.0) to the consumer that needs it.
+  - `strict` (boolean; optional; default `true`)
+- Connect the provided `rules-settings` (com.clodhub/rules-settings 1.0.0) to the consumer that needs it.
 - No accounts or keys are needed.
 
 ## For the developer
@@ -17,4 +17,4 @@ Write the rules file as plain JSON with snake_case names, one section per concer
 From the component directory:
 
 - `node --test tests/web.test.ts` (web, required-local; tools: node 26.5)
-- `python3 -m aepm review <digest> --store STORE --policy POLICY --trusted --allow-network` checks an archive fetched with `python3 -m aepm fetch clodhub/rules-settings@VERSION --store STORE --from https://clodhub.com` and runs its suites.
+- `python3 -m clod review <digest> --store STORE --policy POLICY --trusted --allow-network` checks an archive fetched with `python3 -m clod fetch rules-settings@VERSION --store STORE --from https://clodhub.com` and runs its suites.

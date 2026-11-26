@@ -7,19 +7,19 @@
   "focus": "component",
   "definitions": [
     {
-      "id": "clodhub.rules-settings",
+      "id": "com.clodhub.rules-settings",
       "name": "Rules settings",
       "kind": "component",
       "status": "example",
-      "package": "clodhub/rules-settings",
-      "version": "0.10.0",
+      "package": "pkg:clod/com.clodhub/rules-settings",
+      "version": "0.11.0",
       "ports": [
         {
           "id": "rules-settings",
           "name": "Rules settings",
           "direction": "output",
           "kind": "interface",
-          "type": "ae/rules-settings",
+          "type": "com.clodhub/rules-settings",
           "version": "1.0.0"
         }
       ],
@@ -54,7 +54,7 @@
           "name": "Rules settings",
           "direction": "input",
           "kind": "interface",
-          "type": "ae/rules-settings",
+          "type": "com.clodhub/rules-settings",
           "version": "1.0.0",
           "required": true,
           "cardinality": "one"
@@ -67,7 +67,7 @@
     {
       "id": "component",
       "name": "Rules settings",
-      "definition": "clodhub.rules-settings",
+      "definition": "com.clodhub.rules-settings",
       "configuration": {}
     },
     {

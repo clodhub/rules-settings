@@ -6,10 +6,10 @@ The game and the rules page must never disagree. The recipe solves this by keepi
 Facilities: `rules-settings` (Load and validate a rules file, read rules by path, list rules for a page).
 
 ## User inputs
-The installer collects two settings. `rulesFile` is the name of the rules file the game reads (a lower-case slug; default `house-rules`): the rules are `<name>.json` and their schema `<name>.schema.json` in the application's rules folder (`rulesLocation`). It is a name, not a path, because aepm checks every setting against a grammar and none of the grammars admits a file path. `strict`, when true (default), makes every object in the schema reject fields the schema does not list, so a misspelt rule name is an error instead of being ignored.
+The installer collects two settings. `rulesFile` is the name of the rules file the game reads (a lower-case slug; default `house-rules`): the rules are `<name>.json` and their schema `<name>.schema.json` in the application's rules folder (`rulesLocation`). It is a name, not a path, because clod checks every setting against a grammar and none of the grammars admits a file path. `strict`, when true (default), makes every object in the schema reject fields the schema does not list, so a misspelt rule name is an error instead of being ignored.
 
 - `rulesFile` (string, slug; optional; default `house-rules`)
-- `strict` (boolean; optional; default `True`)
+- `strict` (boolean; optional; default `true`)
 
 ## Artefacts and dependencies
 `component.json` maps every `implementation/` source into `components/rules-settings/`:
@@ -22,7 +22,7 @@ Dependencies: none.
 `tools.lock.json` pins verification tools: node 26.5. Licence: `Apache-2.0` (`LICENCE`, `NOTICE`).
 
 ## Provided interfaces
-- `interfaces/rules-settings.json` defines `rules-settings` (ae/rules-settings) version 1.0.0: an OpenRPC 1.3.2 document, one method per function (a member of a created object is `<Type>.<member>`), with parameter, result and data types as JSON Schema 2020-12 (`components.schemas`) and thrown errors under `errors`.
+- `interfaces/rules-settings.json` defines `rules-settings` (com.clodhub/rules-settings) version 1.0.0: an OpenRPC 1.3.2 document, one method per function (a member of a created object is `<Type>.<member>`), with parameter, result and data types as JSON Schema 2020-12 (`components.schemas`) and thrown errors under `errors`.
 
 ## Required interfaces
 None.

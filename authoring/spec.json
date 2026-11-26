@@ -1,6 +1,7 @@
 {
   "name": "rules-settings",
-  "version": "0.10.0",
+  "version": "0.11.0",
+  "sourceRevision": "19905b75dbea89fbfd424d67fe26c81aaed0e018",
   "title": "Rules settings",
   "description": "House rules kept in one checked settings file that the game and the rules page both read: a loader, a JSON-schema-style validator with a schema file, typed lookups by path, and rows for a rules page.",
   "facilities": [
@@ -12,7 +13,7 @@
   "provides": [
     {
       "id": "rules-settings",
-      "type": "ae/rules-settings",
+      "type": "com.clodhub/rules-settings",
       "version": "1.0.0",
       "path": "interfaces/rules-settings.json"
     }
@@ -56,7 +57,7 @@
   ],
   "text": {
     "purpose": "The game and the rules page must never disagree. The recipe solves this by keeping the house rules in one JSON file that the engine reads (`rules.ts`) and a human-readable document derived from it. This component generalises that: a loader reads the rules file, a small JSON-schema-style validator checks it against a schema file and reports every problem with its path, `getRule` reads a rule by path (`blinds.levels[2].big_blind`), and `ruleRows` lists every rule with the schema's description for a rules page. Checked rules are deeply frozen. A shipped envelope schema requires `schema_version`, `ruleset_id` and `game`; the recipe supplies a fuller schema for its own sections. The validator supports type, enum, const, minimum, maximum, minLength, maxLength, pattern, items, minItems, maxItems, properties, required, additionalProperties, oneOf, anyOf and local `$ref`; a schema using any other validating keyword is refused rather than silently ignored.",
-    "userInputs": "The installer collects two settings. `rulesFile` is the name of the rules file the game reads (a lower-case slug; default `house-rules`): the rules are `<name>.json` and their schema `<name>.schema.json` in the application's rules folder (`rulesLocation`). It is a name, not a path, because aepm checks every setting against a grammar and none of the grammars admits a file path. `strict`, when true (default), makes every object in the schema reject fields the schema does not list, so a misspelt rule name is an error instead of being ignored.",
+    "userInputs": "The installer collects two settings. `rulesFile` is the name of the rules file the game reads (a lower-case slug; default `house-rules`): the rules are `<name>.json` and their schema `<name>.schema.json` in the application's rules folder (`rulesLocation`). It is a name, not a path, because clod checks every setting against a grammar and none of the grammars admits a file path. `strict`, when true (default), makes every object in the schema reject fields the schema does not list, so a misspelt rule name is an error instead of being ignored.",
     "integration": "At startup the server calls `loadRulesSettings({rulesFile, strict}, folder)` (or `requireRules(rulesFile, schemaFile, {strict})` with explicit paths), which returns an object with `value(path)` and `has(path)`; on bad rules it throws with every problem listed and the game does not start. Other components then read numbers with `getRule(rules, \"timing.decision_seconds\")` instead of constants (for example the clock, level, chip and hold'em rule components can take their settings from here). The web client can import `implementation/web/schema.ts` and show `ruleRows(rules, schema)` as the rules page. Server code is `rules.ts` (reads files with `node:fs`); `web/schema.ts` has no file access and is imported by the server file, both installed under `components/rules-settings/`. `value(path)` is what the turn engine calls (it reads only `timing.decision_seconds`): the value at the dotted path, or `undefined` when the rules have none.",
     "infrastructure": "No deployed service and no accounts. The rules file and schema ship with the application; reading them needs the host's file system (server) or a fetched copy (browser).",
     "verification": "`tests/web.test.ts` loads the OurPoker house rules from `tests/fixtures/texas-holdem-house-rules.json` (test data only) and checks them against `tests/fixtures/texas-holdem-house-rules.schema.json`, then mutates them: wrong type, out-of-range number, bad enum, missing field, bad pattern, unknown field in strict mode and null only where allowed. It also tests the other keywords, refusal of unusable schemas, frozen results, path lookups, rule rows with descriptions, loading from disk and the startup error message, `value(path)` (present, missing, deep, indexed), the file-name convention and its refusal of names that could leave the folder, and loading by name.",
@@ -86,13 +87,13 @@
   "classes": [
     {
       "reference": {
-        "name": "clodhub/rules-settings-class",
+        "name": "pkg:clod/com.clodhub/rules-settings-class",
         "version": "1.1.0",
-        "digest": "ad578301ef7bc3e350a99cb53765e30e7e31f8994db2959695d443e00455e0b4"
+        "digest": "79e247cd787503095a80b0e4dcea786731d5697855477ecc2ae740aea5ba7658"
       },
       "descriptor": {
-        "format": 2,
-        "name": "clodhub/rules-settings-class",
+        "format": 3,
+        "name": "pkg:clod/com.clodhub/rules-settings-class",
         "version": "1.1.0",
         "title": "Rules settings",
         "summary": "A typed settings file read, checked and frozen for the rest of the application",
@@ -100,7 +101,7 @@
         "presentation": "none",
         "provides": [
           {
-            "type": "ae/rules-settings",
+            "type": "com.clodhub/rules-settings",
             "version": "1.0.0",
             "path": "classes/rules-settings-class/rules-settings.json",
             "modules": {
@@ -141,11 +142,11 @@
           },
           {
             "path": "classes/rules-settings-class/rules-settings.json",
-            "digest": "30fb1bd341295be7e30ffa8268c079fc08d59b318f67399d658364d816c76734"
+            "digest": "e664cf8a0630674b9697810a7a42821309c7a3a4091170dafcc1a54698103750"
           },
           {
             "path": "classes/rules-settings-class/runtime.mjs",
-            "digest": "7440f3891614c423f74668cb5a2445fea58bbfa4d7c740c8e8a855d1d9300d43"
+            "digest": "1d85f0dae92d5c6c859cd48a4211a933718ae3e168554a2b00806183c4b661f0"
           }
         ],
         "verification": [
@@ -177,9 +178,9 @@
   ],
   "implements": [
     {
-      "name": "clodhub/rules-settings-class",
+      "name": "pkg:clod/com.clodhub/rules-settings-class",
       "version": "1.1.0",
-      "digest": "ad578301ef7bc3e350a99cb53765e30e7e31f8994db2959695d443e00455e0b4"
+      "digest": "79e247cd787503095a80b0e4dcea786731d5697855477ecc2ae740aea5ba7658"
     }
   ],
   "upstream": [],

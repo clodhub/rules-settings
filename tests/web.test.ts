@@ -169,6 +169,6 @@ test("loadRulesSettings: startup by name, checked against its own schema, value(
   assert.throws(() => loadRulesSettings({rulesFile: "../x"}, dir), RangeError);
 });
 
-test("the default rules file name is a slug, the grammar aepm checks every setting value against", () => {
+test("the default rules file name is a slug, the grammar clod checks every setting value against", () => {
   assert.match(DEFAULT_RULES_FILE, /^[a-z][a-z0-9-]{0,63}$/);
 });
